@@ -8,3 +8,5 @@ pyarrow==17.0.0
 faiss-cpu==1.7.4
 tiktoken==0.4.0 
 google-generativeai
+InstructorEmbedding
+sentence-transformers==2.2.2
