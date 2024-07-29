@@ -6,16 +6,17 @@ from langchain.docstore.document import Document
 from langchain.embeddings import HuggingFaceInstructEmbeddings
 from langchain.prompts import PromptTemplate
 from langchain.chains import RetrievalQA
+import streamlit as st
 import pandas as pd
 import os
 from dotenv import load_dotenv
 from langchain.schema.output_parser import OutputParserException
 
-load_dotenv()  # take environment variables from .env (especially openai api key)
+# load_dotenv()  # take environment variables from .env (especially openai api key)
 
 # Create Google Palm LLM model
-llm = GooglePalm(google_api_key=os.environ["GOOGLE_API_KEY"], temperature=0.5)
-
+# llm = GooglePalm(google_api_key=os.environ["GOOGLE_API_KEY"], temperature=0.5)
+llm = GooglePalm(google_api_key=st.secrets['OPENAI_API_KEY'], temperature=0.5)
 # Initialize instructor embeddings using the Hugging Face model
 instructor_embeddings = HuggingFaceInstructEmbeddings(model_name="hkunlp/instructor-large")
 vectordb_file_path = "faiss_index"
